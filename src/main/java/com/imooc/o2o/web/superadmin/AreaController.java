@@ -22,7 +22,7 @@ public class AreaController {
     @Autowired
     private AreaService areaService;
     @RequestMapping(value = "/listarea",method = RequestMethod.GET)
-    @ResponseBody
+    @ResponseBody//返回给前端
     private Map<String,Object> listArea(){
         logger.info("===start===");
         long stratTime = System.currentTimeMillis();
@@ -33,6 +33,7 @@ public class AreaController {
             modelMap.put("rows",list);
             modelMap.put("total",list.size());
         }catch (Exception e){
+            //存储错误信息
             e.printStackTrace();
             modelMap.put("success",false);
             modelMap.put("errM",e.toString());
